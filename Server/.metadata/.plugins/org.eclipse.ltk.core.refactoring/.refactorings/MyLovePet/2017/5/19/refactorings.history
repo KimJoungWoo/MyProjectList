@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;MyLovePet/src/Servlet/CheckUserIDServlet.java&apos; to &apos;CheckOverlapJoin.java&apos;" description="Rename resource &apos;CheckUserIDServlet.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Servlet/CheckUserIDServlet.java" name="CheckOverlapJoin.java" stamp="1494492630780" updateReferences="true"/>
+</session>
