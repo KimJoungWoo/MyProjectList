@@ -1,0 +1,4 @@
+127.0.0.1 - - [12/May/2017:00:08:11 +0900] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [12/May/2017:00:17:29 +0900] "GET /MyLovePet/Servlet/join?id=test&passwd=test&name=test&subName=test&email=test@naver.com&zoneCode=410-1&city=testsjfldsdsfsdfjsdfsd&streetAddr=sdfsdkfsdklfjsdlfjlkdsjflksdjflds HTTP/1.1" 200 35
+127.0.0.1 - - [12/May/2017:00:22:31 +0900] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [12/May/2017:00:36:38 +0900] "GET / HTTP/1.1" 404 994
