@@ -1,0 +1,11 @@
+127.0.0.1 - - [16/May/2017:18:47:16 +0900] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [16/May/2017:18:47:29 +0900] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [16/May/2017:18:47:51 +0900] "GET /MyLovePet/Servlet/login?id=admin&pass=admin HTTP/1.1" 200 37
+0:0:0:0:0:0:0:1 - - [16/May/2017:18:47:51 +0900] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [16/May/2017:18:49:33 +0900] "GET /MyLovePet/Servlet/login?id=admin&pass=admin HTTP/1.1" 200 36
+127.0.0.1 - - [16/May/2017:18:51:35 +0900] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [16/May/2017:18:52:22 +0900] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [16/May/2017:18:52:26 +0900] "GET /MyLovePet/Servlet/login?id=admin&pass=admin HTTP/1.1" 200 36
+127.0.0.1 - - [16/May/2017:18:56:33 +0900] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [16/May/2017:18:56:39 +0900] "GET /MyLovePet/Servlet/login?id=admin&pass=admin HTTP/1.1" 200 36
+0:0:0:0:0:0:0:1 - - [16/May/2017:18:57:37 +0900] "GET /MyLovePet/Servlet/animalInfo HTTP/1.1" 200 134

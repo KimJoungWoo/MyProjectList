@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.json.simple.JSONObject;
@@ -49,6 +50,10 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 	
+	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws IOException, ServletException {
+		doPost( request, response );
+	}
+	
 	@SuppressWarnings("unchecked")
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws IOException, ServletException
 	{
@@ -58,6 +63,7 @@ public class LoginServlet extends HttpServlet {
 		Connection conn = null;
 		Statement stmt = null;
 		boolean isSuccessed = false;
+		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		
 		
@@ -76,7 +82,10 @@ public class LoginServlet extends HttpServlet {
 			ResultSet rs = stmt.executeQuery( query );
 			
 			if( rs.next() )
+			{
 				isSuccessed = true;
+				session.setAttribute( "id", id );
+			}
 			else
 				isSuccessed = false;
 			
