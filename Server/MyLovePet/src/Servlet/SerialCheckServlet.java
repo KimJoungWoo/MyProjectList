@@ -74,7 +74,7 @@ public class SerialCheckServlet extends HttpServlet {
 			if( rs.next() )
 				isMattched = true;
 			else
-				isMattched = true;
+				isMattched = false;
 			
 			JSONObject inner = new JSONObject();
 			JSONObject outer = new JSONObject();

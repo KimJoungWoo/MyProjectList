@@ -65,6 +65,8 @@ public class CreateAnimalServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		boolean isSuccessed = false;
 		
+		request.setCharacterEncoding( "utf-8" );
+		
 		String strUserID = (String)session.getAttribute( "id" );
 		String strAnimalIndex = request.getParameter( "AnimalIndex" );
 		String strSerialNo = request.getParameter( "SerialNo" );
