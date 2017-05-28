@@ -95,7 +95,7 @@ public class ConditionServlet extends HttpServlet {
 			{
 
 				GregorianCalendar date = new GregorianCalendar();
-				date.setTime( rs.getTimestamp( "checktime" ) );
+				date.setTime( rs.getTime( "checktime" ) );
 				String time = String.format( "%TF %TT", date, date );
 				result = makeJsonString( rs.getInt( "serialno" ), rs.getFloat( "avgtemp" )
 						, rs.getInt( "avgheart" ), rs.getInt( "step" ), time );

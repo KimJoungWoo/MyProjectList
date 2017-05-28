@@ -71,4 +71,24 @@
 		<servlet-name>animal-info-servlet</servlet-name>
 		<url-pattern>/Servlet/animalInfo</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>serial-check-servlet</servlet-name>
+		<servlet-class>Servlet.SerialCheckServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>serial-check-servlet</servlet-name>
+		<url-pattern>/Servlet/checkSerial</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>create-animal-servlet</servlet-name>
+		<servlet-class>Servlet.CreateAnimalServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>create-animal-servlet</servlet-name>
+		<url-pattern>/Servlet/createAnimal</url-pattern>
+	</servlet-mapping>
 </web-app>
