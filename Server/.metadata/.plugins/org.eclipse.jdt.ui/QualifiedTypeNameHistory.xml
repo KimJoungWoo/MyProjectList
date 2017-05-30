@@ -10,15 +10,16 @@
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="org.json.simple.JSONArray"/>
-<fullyQualifiedTypeName name="jdk.nashorn.internal.parser.JSONParser"/>
-<fullyQualifiedTypeName name="org.json.simple.parser.JSONParser"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
+<fullyQualifiedTypeName name="com.mysql.jdbc.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="jdk.nashorn.internal.parser.JSONParser"/>
+<fullyQualifiedTypeName name="org.json.simple.parser.JSONParser"/>
 <fullyQualifiedTypeName name="javax.naming.Context"/>
 <fullyQualifiedTypeName name="javax.sql.DataSource"/>
 <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="com.mysql.jdbc.PreparedStatement"/>
-<fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
