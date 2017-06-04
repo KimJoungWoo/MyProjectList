@@ -91,4 +91,14 @@
 		<servlet-name>create-animal-servlet</servlet-name>
 		<url-pattern>/Servlet/createAnimal</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>add-condition-servlet</servlet-name>
+		<servlet-class>Servlet.AddConditionServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>add-condition-servlet</servlet-name>
+		<url-pattern>/Servlet/addCondition</url-pattern>
+	</servlet-mapping>
 </web-app>

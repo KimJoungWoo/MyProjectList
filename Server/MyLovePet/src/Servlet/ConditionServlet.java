@@ -66,6 +66,11 @@ public class ConditionServlet extends HttpServlet {
 		return out.toJSONString();
 	}
 	
+	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
+	{
+		doPost( request, response );
+	}
+	
 	
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws IOException, ServletException
 	{
@@ -75,7 +80,9 @@ public class ConditionServlet extends HttpServlet {
 				+ "AnimalCondition "
 				+ "where "
 				+ "serialno = "
-				+ serialNo;
+				+ serialNo
+				+ " order by checktime desc "
+				+ "limit 1";
 		Connection conn = null;
 		Statement stmt = null;
 		PrintWriter writer = response.getWriter();
