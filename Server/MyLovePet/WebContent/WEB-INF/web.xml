@@ -111,4 +111,24 @@
 		<servlet-name>add-petsitter-servlet</servlet-name>
 		<url-pattern>/Servlet/addPetsitter</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>register-token-servlet</servlet-name>
+		<servlet-class>Servlet.RegisterTokenServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>register-token-servlet</servlet-name>
+		<url-pattern>/Servlet/registerToken</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>push-notification-servlet</servlet-name>
+		<servlet-class>Servlet.PushNotificationServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>push-notification-servlet</servlet-name>
+		<url-pattern>/Servlet/pushNotification</url-pattern>
+	</servlet-mapping>
 </web-app>

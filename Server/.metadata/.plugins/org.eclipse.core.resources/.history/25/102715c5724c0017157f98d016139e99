@@ -1,0 +1,169 @@
+package Servlet;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.MulticastResult;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
+
+public class PushNotificationServlet extends HttpServlet {
+	private Context context;
+	private DataSource dataSource;
+	private static final String m_cstrApiKey = "AAAAQYAAFk0:APA91bFwvrE2ydCJGMpbNiwGbz2xUUUB1T8hlvME8enh1F3C"
+			+ "44wcPPo-MshG9oiYMAFcXf-eZ5dSlCV6emSGe8lBQPqFK_BWrFsvForg9APYy78j9VzlIJfKcSMDPW9kutf9Tiuo6JDR";
+	
+	public void init( ServletConfig config ) throws ServletException
+	{
+		context = null;
+		dataSource = null;
+		
+		try {
+			context = new InitialContext();
+			dataSource = (DataSource)context.lookup( "java:comp/env/jdbc/OurCompany" );
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void destroy()
+	{
+		if( context != null )
+			try {
+				context.close();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	private Connection connectDataBase()
+	{
+		Connection conn = null;
+		
+		try {
+			conn = dataSource.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return conn;
+	}
+	
+	private void disconnectDataBase( Connection conn )
+	{
+		if( conn == null )
+			return ;
+		
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
+	{
+		doPost( request, response );
+	}
+	
+	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
+	{
+		HttpSession session = request.getSession();
+		Connection conn = null;
+		String message = request.getParameter( "msg" );
+		String id = (String)session.getAttribute( "id" );
+		if( !id.equals( "admin" ) )
+			throw new ServletException( "ACCESS ERROR User not Account" );
+		
+		conn = connectDataBase();
+		if( conn == null )
+			throw new ServletException( "Connection Error" );
+		
+		ArrayList<String> token = getToken( conn );
+		
+		if( token == null )
+			throw new ServletException( "ArrayList Error" );
+		
+		disconnectDataBase( conn );
+		sendNotification( message, token );
+	}
+	
+	private ArrayList<String> getToken( Connection conn )
+	{
+		ArrayList<String> token = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		String query = "select * from PushToken";
+		
+		try {
+			pstmt = conn.prepareStatement( query );
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if( rs.next() )
+			{
+				token.add( rs.getString( "token" ) );
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return null;
+		}
+		
+		return token;
+	}
+	
+	private void sendNotification( String msg, ArrayList<String> token )
+	{
+		String MSG_ID = (Math.random() % 100 + 1) + "";						// message 고유 id
+		boolean SHOW_ON_IDLE = false;										// 앱 활성화 상태일때 보여줄 것인지
+		int LIVE_TIME = 1;													// 앱 비활성화 상태일 때 FCM가 메세지를 유효화 하는 시간
+		int RETRY = 2;														// 메세지 전송 실패시 재시도 횟수
+		MulticastResult mResult = null;
+		
+		Sender sender = new Sender( m_cstrApiKey );
+		Message message = new Message.Builder().collapseKey( MSG_ID )
+				.delayWhileIdle( SHOW_ON_IDLE )
+				.timeToLive( LIVE_TIME )
+				.addData( "message", msg )
+				.build();
+		
+		try {
+			mResult = sender.send( message, token, RETRY );
+			
+			List<Result> resultList = mResult.getResults();
+			System.out.println( "Insert Here");
+			
+			for( Result result : resultList )
+			{
+				System.out.println( "result: " +  result.getErrorCodeName() );
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
