@@ -31,7 +31,7 @@ public class AddConditionServlet extends HttpServlet {
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}	
 		
 	}
 	
