@@ -57,6 +57,7 @@ public class AnimalInfoServlet extends HttpServlet {
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
 	{
 		HttpSession session = request.getSession();
+		response.setContentType( "text/html; charset=UTF-8");
 		Connection conn = null;
 		Statement stmt = null;
 		JSONObject outer = new JSONObject();
@@ -67,6 +68,7 @@ public class AnimalInfoServlet extends HttpServlet {
 				+ "AnimalInfo "
 				+ "where "
 				+ "userid like '%s'", id );
+
 		
 		String result = null;
 		

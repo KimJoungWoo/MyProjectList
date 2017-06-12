@@ -158,7 +158,6 @@ public class PushNotificationServlet extends HttpServlet {
 			mResult = sender.send( message, token, RETRY );
 			
 			List<Result> resultList = mResult.getResults();
-			System.out.println( "Insert Here");
 			
 			for( Result result : resultList )
 			{
