@@ -123,10 +123,9 @@ public class PushNotificationServlet extends HttpServlet {
 			
 			ResultSet rs = pstmt.executeQuery();
 			
-			while( rs.next() )
+			if( rs.next() )
 			{
 				token.add( rs.getString( "token" ) );
-				System.out.println( "getToken" );
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
